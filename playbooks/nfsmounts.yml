@@ -1,0 +1,19 @@
+  - name: Install NFS common utilities (for client) 
+    apt:
+      name:
+        - nfs-common
+      state: present
+      update_cache: true
+    become: true
+
+  - name: Ensure docker users are added to the docker group
+    user:
+      name:  jason
+      groups: docker
+      append: true
+
+  - name: Fix docker.sock permissions
+    file:
+      path: /var/run/docker.sock
+      mode: '0660'
+    become: true
