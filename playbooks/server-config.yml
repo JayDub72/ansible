@@ -49,7 +49,7 @@
     - name: cloning powerlevel10k
       git:
         repo=https://gitee.com/romkatv/powerlevel10k.git
-        dest=~{{ userID }}/powerlevel10k
+        dest=~{{ userID }}/.oh-my-zsh/themes/powerlevel10k
       when: not stat_oh_my_zsh_result.stat.exists
 
     - name: creating new ~/.zshrc
