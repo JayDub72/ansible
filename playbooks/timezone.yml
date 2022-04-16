@@ -1,4 +1,5 @@
-- hosts: "ubuntu"
+- name: Update timezone settings
+  hosts: "ubuntu"
   become: yes
   tasks:
   - name: Set timezone to America/Chicago
