@@ -12,7 +12,7 @@
   
   - name: Make directories
     file:
-      path: "{{ paths}}"
+      path: "{{ item }}"
       state: directory
       owner: jason
       group: jason
