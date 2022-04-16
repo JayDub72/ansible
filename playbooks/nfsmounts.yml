@@ -27,7 +27,14 @@
 
   - name: update fstab with mount points
     ansible.posix.mount:
-      src: rocinate.home.lan:/datapool/downloads
-      path: /mnt/media/downloads
+      src: rocinate.home.lan:/datapool/{{ item }}
+      path: /mnt/media/{{ item }}
       state: mounted
       fstype: nfs
+    loop:
+      - downloads
+      - home_videos
+      - movies
+      - photos
+      - storage
+      - tv
