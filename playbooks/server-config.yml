@@ -48,7 +48,7 @@
       git:
         repo=https://gitee.com/romkatv/powerlevel10k.git
         dest=~/powerlevel10k
-      when not stat_oh_my_zsh_result.stat.exists
+      when: not stat_oh_my_zsh_result.stat.exists
 
     - name: Creating new ~/.zshrc
       copy:
