@@ -10,23 +10,23 @@
       update_cache: true
     become: true
   
-  - name: Make directories
-    file:
-      path: "{{ item }}"
-      state: directory
-      owner: jason
-      group: jason
-      mode: 0775
-    loop:
-      - /mnt/media/downloads
-      - /mnt/media/home_videos
-      - /mnt/media/movies
-      - /mnt/media/photos
-      - /mnt/media/storage
-      - /mnt/media/tv
+- name: make directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: jason
+    group: jason
+    mode: 0775
+  loop:
+    - /mnt/media/downloads
+    - /mnt/media/home_videos
+    - /mnt/media/movies
+    - /mnt/media/photos
+    - /mnt/media/storage
+    - /mnt/media/tv
 
-  - name: Update fstab with mount points
-    ansible.posix.mount:
+- name: update fstab with mount points
+  ansible.posix.mount:
     src: rocinate.home.lan:/datapool/downloads
     path: /mnt/media/downloads
     state: mounted
