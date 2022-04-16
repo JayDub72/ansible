@@ -7,12 +7,12 @@
     tmzone: America/Chicago
 
   tasks:
-    - name: Update apt-cache
+    - name: update apt-cache
       apt:
         update_cache: yes
         cache_valid_time: 3600
 
-    - name: Upgrade all packages
+    - name: upgrade all packages
       apt:
         upgrade: yes
         state: latest
@@ -27,7 +27,7 @@
           - zsh-autosuggestions
         state: latest
 
-    - name: Check if .zshrc exists
+    - name: check if .zshrc exists
       stat:
         path: ~/.zshrc
       register: stat_rc_result
@@ -37,24 +37,24 @@
         path: ~/.oh-my-zsh
       register: stat_oh_my_zsh_result
 
-    - name: Cloning oh-my-zsh
+    - name: cloning oh-my-zsh
       git:
         repo=https://github.com/robbyrussell/oh-my-zsh
         dest=~/.oh-my-zsh
       when: not stat_oh_my_zsh_result.stat.exists
 
-    - name: cloing powerlevel10k
+    - name: cloning powerlevel10k
       git:
         repo=https://gitee.com/romkatv/powerlevel10k.git
         dest=~/powerlevel10k
       when: not stat_oh_my_zsh_result.stat.exists
 
-    - name: Creating new ~/.zshrc
+    - name: creating new ~/.zshrc
       copy:
-        src=~/.oh-my-zsh/templates/zshrc.zsh-template
+        src=./templates/zshrc
         dest=~/.zshrc
       when: not stat_rc_result.stat.exists
 
-    - name: Set timezone to {{ tmzone }}
+    - name: set timezone to {{ tmzone }}
       timezone:
         name: "{{ tmzone }}"
