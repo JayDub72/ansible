@@ -43,7 +43,7 @@
     - name: cloning oh-my-zsh
       git:
         repo=https://github.com/robbyrussell/oh-my-zsh
-        dest=~{{ userID }}.oh-my-zsh
+        dest=~{{ userID }}/.oh-my-zsh
       when: not stat_oh_my_zsh_result.stat.exists
 
     - name: cloning powerlevel10k
