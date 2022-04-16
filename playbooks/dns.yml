@@ -1,6 +1,0 @@
-  - name: Update DNS servers and domains for Cloud-Init VMs
-    hosts: ubuntu
-    vars:
-      - dns_src: "./templates/etc/resolv.conf"
-      - dns_dest: "/etc/resolv.conf"
-      

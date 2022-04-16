@@ -1,8 +1,0 @@
-- hosts: "*"
-  become: yes
-  tasks:
-  - name: Upgrade all packages
-    apt:
-      name: "*"
-      state: latest
-      update_cache: yes
