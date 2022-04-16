@@ -1,5 +1,6 @@
 - name: Install NFS mounts
   hosts: ubuntu
+  gather_facts: no
   tasks:
   - name: Install depdencies
     apt:
@@ -8,3 +9,18 @@
       state: present
       update_cache: true
     become: true
+  
+  - name: Make directories
+    file:
+      path: "{{ paths}}"
+      state: directory
+      owner: jason
+      group: jason
+      mode: 0775
+    loop:
+      - /mnt/media/downloads
+      - /mnt/media/home_videos
+      - /mnt/media/movies
+      - /mnt/media/photos
+      - /mnt/media/storage
+      - /mnt/media/tv
