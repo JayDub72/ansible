@@ -1,1 +1,1 @@
-ansible-playbook -i ./inventory/hosts.yml -k -e ./playbooks/timezone.yml
+ansible-playbook -i ./inventory/hosts.yml -b -K ./playbooks/timezone.yml
