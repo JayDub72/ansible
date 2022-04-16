@@ -6,7 +6,7 @@
   vars:
     tmzone: America/Chicago
 
-tasks
+tasks:
   - name: Update apt-cache
     apt:
       update_cache: yes
@@ -49,7 +49,7 @@ tasks
       repo=https://gitee.com/romkatv/powerlevel10k.git
       dest=~/powerlevel10k
     when not stat_oh_my_zsh_result.stat.exists
-    
+
   - name: Creating new ~/.zshrc
     copy:
       src=~/.oh-my-zsh/templates/zshrc.zsh-template
