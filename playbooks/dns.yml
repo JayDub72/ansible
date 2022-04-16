@@ -1,4 +1,5 @@
   - name: Update DNS servers and domains for Cloud-Init VMs
+    hosts: ubuntu
     net_system:
       domain_name: home.lan
       domain-search:
