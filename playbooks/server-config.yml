@@ -16,7 +16,6 @@
       apt:
         upgrade: yes
         state: latest
-      when: keep_packages_updated
 
     - name: install base packages
       apt:
