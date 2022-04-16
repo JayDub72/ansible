@@ -1,21 +1,6 @@
   - name: Update DNS servers and domains for Cloud-Init VMs
     hosts: ubuntu
-    net_system:
-      domain_name: home.lan
-      domain-search:
-        - home.lan
-
-  - name: Remove DNS configuration
-    net_system:
-      state: absent
-
-  - name: Configure DNS lookup sources
-    net_system:
-      lookup_source: eth0
+    vars:
+      - dns_src: "./templates/etc/resolv.conf"
+      - dns_dest: "/etc/resolv.conf"
       
-  - name: Configure name servers
-    net_system:
-      name_servers:
-        - 192.168.1.54
-        - 192.168.1.1
-
