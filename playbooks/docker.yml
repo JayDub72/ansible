@@ -1,4 +1,5 @@
 - name: Install Docker engine
+  hosts: "*"
   become: true
   tasks:
   - name: install depdencies
