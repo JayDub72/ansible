@@ -6,56 +6,56 @@
   vars:
     tmzone: America/Chicago
 
-tasks:
-  - name: Update apt-cache
-    apt:
-      update_cache: yes
-      cache_valid_time: 3600
+  tasks:
+    - name: Update apt-cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
 
-  - name: Upgrade all packages
-    apt:
-      upgrade: yes
+    - name: Upgrade all packages
+      apt:
+        upgrade: yes
+        state: latest
+      when: keep_packages_updated
+
+    - name: install base packages
+      apt:
+        pkg: 
+        - net-tools
+        - git
+        - zsh
+        - zsh-syntax-highlighting
+        - zsh-autosuggestions
       state: latest
-    when: keep_packages_updated
 
-  - name: install base packages
-    apt:
-      pkg: 
-      - net-tools
-      - git
-      - zsh
-      - zsh-syntax-highlighting
-      - zsh-autosuggestions
-    state: latest
+    - name: Check if .zshrc exists
+      stat:
+        path: ~/.zshrc
+      register: stat_rc_result
 
-  - name: Check if .zshrc exists
-    stat:
-      path: ~/.zshrc
-    register: stat_rc_result
+    - name: Check if .oh-my-zsh exists
+      stat:
+        path: ~/.oh-my-zsh
+      register: stat_oh_my_zsh_result
 
-  - name: Check if .oh-my-zsh exists
-    stat:
-      path: ~/.oh-my-zsh
-    register: stat_oh_my_zsh_result
+    - name: Cloning oh-my-zsh
+      git:
+        repo=https://github.com/robbyrussell/oh-my-zsh
+        dest=~/.oh-my-zsh
+      when: not stat_oh_my_zsh_result.stat.exists
 
-  - name: Cloning oh-my-zsh
-    git:
-      repo=https://github.com/robbyrussell/oh-my-zsh
-      dest=~/.oh-my-zsh
-    when: not stat_oh_my_zsh_result.stat.exists
+    - name: cloing powerlevel10k
+      git:
+        repo=https://gitee.com/romkatv/powerlevel10k.git
+        dest=~/powerlevel10k
+      when not stat_oh_my_zsh_result.stat.exists
 
-  - name: cloing powerlevel10k
-    git:
-      repo=https://gitee.com/romkatv/powerlevel10k.git
-      dest=~/powerlevel10k
-    when not stat_oh_my_zsh_result.stat.exists
+    - name: Creating new ~/.zshrc
+      copy:
+        src=~/.oh-my-zsh/templates/zshrc.zsh-template
+        dest=~/.zshrc
+      when: not stat_rc_result.stat.exists
 
-  - name: Creating new ~/.zshrc
-    copy:
-      src=~/.oh-my-zsh/templates/zshrc.zsh-template
-      dest=~/.zshrc
-    when: not stat_rc_result.stat.exists
-
-  - name: Set timezone to {{ tmzone }}
-    timezone:
-      name: {{ tmzone }}
+    - name: Set timezone to {{ tmzone }}
+      timezone:
+        name: {{ tmzone }}
