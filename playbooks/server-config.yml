@@ -21,12 +21,12 @@
     - name: install base packages
       apt:
         pkg: 
-        - net-tools
-        - git
-        - zsh
-        - zsh-syntax-highlighting
-        - zsh-autosuggestions
-      state: latest
+          - net-tools
+          - git
+          - zsh
+          - zsh-syntax-highlighting
+          - zsh-autosuggestions
+        state: latest
 
     - name: Check if .zshrc exists
       stat:
