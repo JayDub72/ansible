@@ -58,4 +58,4 @@
 
     - name: Set timezone to {{ tmzone }}
       timezone:
-        name: "{{ tmzone }}""
+        name: "{{ tmzone }}"
