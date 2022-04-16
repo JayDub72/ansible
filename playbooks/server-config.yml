@@ -51,7 +51,7 @@
 
     - name: creating new ~/.zshrc
       copy:
-        src=./templates/zshrc
+        src=zshrc
         dest=~/.zshrc
       when: not stat_rc_result.stat.exists
 
