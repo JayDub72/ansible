@@ -1,0 +1,4 @@
+# first, install content via ansible-galaxy install cloudalchemy.node_exporter
+- hosts: all
+  roles:
+    - cloudalchemy.node_exporter
