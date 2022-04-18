@@ -18,6 +18,7 @@
       group: jason
       mode: 0775
     loop:
+      - /mtn/media/audiobooks
       - /mnt/media/downloads
       - /mnt/media/home_videos
       - /mnt/media/movies
@@ -32,6 +33,7 @@
       state: mounted
       fstype: nfs
     loop:
+      - audiobooks
       - downloads
       - home_videos
       - movies
