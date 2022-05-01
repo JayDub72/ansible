@@ -21,7 +21,7 @@ plugins=( git )
 
 # oh my zsh and powerlevel10k theme
 source $ZSH/oh-my-zsh.sh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+source $ZSH/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # zsh add-ons
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh

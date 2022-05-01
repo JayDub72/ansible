@@ -1,3 +1,4 @@
+---
 - name: Install NFS mounts
   hosts: ubuntu
   gather_facts: no

@@ -58,6 +58,14 @@
         dest=~{{ userID }}/.zshrc
       when: not stat_rc_result.stat.exists
 
+    - name: update aliases and functions
+      copy:
+        src=aliases
+        dest=~{{ userID }}/.aliases
+      copy:
+        src=functions
+        dest=~{{ userID }}/.functions
+  
     - name: set timezone to {{ tmzone }}
       become: yes
       timezone:
