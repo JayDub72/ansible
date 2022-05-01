@@ -63,9 +63,13 @@ alias u="sudo apt-get update \
 
 ################################
 # Custom aliases
+alias cat='bat'
 alias grep='grep --color'
 alias ls='ls -AGhp --color=auto'
 alias ll='ls -AlFGhp --color=auto'
+alias path='echo -e ${PATH//:/\\n}'
+alias psgrep="ps aux | grep -v grep | grep"
+alias reload="exec $SHELL -l"
 
 # find/disk util aliases
 alias dud='du -d 1 -h'
@@ -73,6 +77,15 @@ alias duf='du -sh *'
 alias fd='find . -type d -name'
 alias ff='find . -type f -name'
 alias fc='fc() { find $1 -type f 2> /dev/null | wc -l };fc'
+
+# docker aliases
+alias dl='docker ps -a'
+alias dockerup='docker-compose pull; docker-compose up -d'
+alias drm='docker rm $(docker ps -aq)'
+alias ds='docker stop $(docker ps -aq)'
+alias dclean='docker stop `docker ps -qa` && docker rm `docker ps -qa` && docker rmi -f `docker images -qa ` && docker volume rm $(docker volume ls -qf) && docker network rm `docker network ls -q`'
+alias de='de() { docker exec -it $1 ${2:-bash} };de'
+alias df='df() { docker logs -f $1 };df'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -88,16 +101,3 @@ alias network.connections='lsof -l -i +L -R -V'
 alias network.established='lsof -l -i +L -R -V | grep ESTABLISHED'
 alias network.externalip='curl -s http://checkip.dyndns.org/ | sed "s/[a-zA-Z<>/ :]//g"'
 alias network.internalip="ifconfig en0 | egrep -o '([0-9]+\.[0-9]+\.[0-9]+\.[0-9]+)'"
-
-# Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
-
-# docker aliases
-alias dl='docker ps -a'
-alias dockerup='cd /optd/docker; docker-compose pull; docker-compose up -d'
-alias drm='docker rm $(docker ps -aq)'
-alias ds='docker stop $(docker ps -aq)'
-alias dclean='docker stop `docker ps -qa` && docker rm `docker ps -qa` && docker rmi -f `docker images -qa ` && docker volume rm $(docker volume ls -qf) && docker network rm `docker network ls -q`'
-alias de='de() { docker exec -it $1 ${2:-bash} };de'
-alias dl='dl() { docker logs -f $1 };dl'
-
