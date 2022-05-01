@@ -2,7 +2,7 @@
 
 set -e
 
-if [ $# != 0 ]
+if [ $# = 0 ]
   then 
     echo 'Please pass a variable of the playbook you want to run. You can also, optionally, specifyc a specific server to limit the scope.'
 elif [ $# = 1 ]
