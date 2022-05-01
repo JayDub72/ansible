@@ -1,6 +1,6 @@
 ---
 - name: Install NFS mounts
-  hosts: ubuntu
+  hosts: "ubuntu"
   gather_facts: no
   tasks:
   - name: Install depdencies

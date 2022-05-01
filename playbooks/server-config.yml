@@ -1,7 +1,7 @@
 # Initial Ubuntu server setup for Worthen Home Lab
 #
 ---
-- hosts: all
+- hosts: ubuntu
   vars:
     userID: jason
     tmzone: America/Chicago
