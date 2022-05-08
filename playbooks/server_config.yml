@@ -76,3 +76,9 @@
       become: yes
       timezone:
         name: "{{ tmzone }}"
+
+    - name: change shell
+      become: yes
+      user:
+        name: '{{ userID }}'
+        shell: /usr/bin/zsh
