@@ -60,8 +60,10 @@
       become_user: {{ userID }}
 
     - name: update aliases and functions
-      copy: src={{ item.src }} dest={{ item.dest }}
-        mode: 0755
+      copy:
+        src={{ item.src }}
+        dest={{ item.dest }}
+        mode: u=rwx, g=rw, o=r
         owner: {{ userID }}
         group: {{ userID }}
       with_items:
