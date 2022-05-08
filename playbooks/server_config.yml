@@ -62,7 +62,7 @@
     - name: update aliases and functions
       copy:
         src: '{{ item }}'
-        dest: "~{{ user ID }}/"
+        dest: '~{{ userID }}/'
         owner: '{{ userID }}'
         group: '{{ userID }}'
         mode: u=rwx, g=rw, o=r
