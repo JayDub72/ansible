@@ -61,10 +61,10 @@
 
     - name: update aliases and functions
       copy:
-        src: {{ item }}
-        dest: ~{{ user ID }}/
-        owner: {{ userID }}
-        group: {{ userID }}
+        src: '{{ item }}'
+        dest: '~{{ user ID }}/'
+        owner: '{{ userID }}'
+        group: '{{ userID }}'
         mode: u=rwx, g=rw, o=r
       with_items:
         - .aliases
