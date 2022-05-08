@@ -49,7 +49,7 @@
         dest=~{{ userID }}/.oh-my-zsh
       when: not stat_oh_my_zsh_result.stat.exists
       become: yes
-      become_user: {{ userID }}
+      become_user: '{{ userID }}'
 
     - name: cloning powerlevel10k
       git:
@@ -57,7 +57,7 @@
         dest=~{{ userID }}/.oh-my-zsh/themes/powerlevel10k
       when: not stat_oh_my_zsh_result.stat.exists
       become: yes
-      become_user: {{ userID }}
+      become_user: '{{ userID }}'
 
     - name: update aliases and functions
       copy:
