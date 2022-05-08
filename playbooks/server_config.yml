@@ -61,18 +61,16 @@
 
     - name: update aliases and functions
       copy:
-        src={{ item.src }}
-        dest={{ item.dest }}
-        mode: u=rwx, g=rw, o=r
+        src: {{ item }}
+        dest: ~{{ user ID }}/
         owner: {{ userID }}
         group: {{ userID }}
+        mode: u=rwx, g=rw, o=r
       with_items:
-        - { src: 'aliases', dest: '~{{ userID }}/.aliases' }
-        - { src: 'functions', dest: '~{{ userID }}/.functions' }
-        - { src: 'p10k.zsh', dest: '~{{ userID }}/.p10k.zsh' }
-        - { src: 'zshrc', dest: '~{{ userID }}/.zshrc' }
-
-
+        - .aliases
+        - .functions
+        - .p10k.zsh
+        - .zshrc
   
     - name: set timezone to {{ tmzone }}
       become: yes
