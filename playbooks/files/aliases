@@ -63,7 +63,7 @@ alias u="sudo apt-get update \
 
 ################################
 # Custom aliases
-alias cat='bat'
+alias cat='batcat'
 alias grep='grep --color'
 alias ls='ls -AGhp --color=auto'
 alias ll='ls -AlFGhp --color=auto'
