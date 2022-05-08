@@ -65,7 +65,7 @@
         dest: '~{{ userID }}/'
         owner: '{{ userID }}'
         group: '{{ userID }}'
-        mode: u=rwx, g=rw, o=r
+        mode: 0755
       with_items:
         - .aliases
         - .functions
